@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lietotajs extends Model
 {
-    protected $table = 'lietotajs';
+    // actual database table uses plural form
+    protected $table = 'lietotaji';
     protected $primaryKey = 'ID';
     public $incrementing = true;
     public $timestamps = false;
