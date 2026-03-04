@@ -291,12 +291,19 @@ button:hover, .btn:hover {
   transform: scale(1.05);
 }
 
-/* navigation login/logout - will sit at end of flex row */
-.nav .btn.auth {
-  margin-left: auto;
+/* box in upper-right for authentication controls */
+.auth-container {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 8px 12px;
+  /* you can add border/background if you want a visible box */
 }
 
-  </style>
+
+  
+  header { position: relative; }
+</style>
 </head>
 <body>
   <header>
@@ -306,14 +313,17 @@ button:hover, .btn:hover {
       <a href="/telpas" class="btn">Telpas</a>
       <a href="/lietotaji" class="btn">Lietotāji</a>
       <a href="/rezerveskopijas" class="btn">Rezerves kopijas</a>
+    </div>
 
+    <!-- special top-right container for auth controls -->
+    <div class="auth-container">
       @if(auth()->check())
         <form method="POST" action="/logout" style="display:inline">
           @csrf
-          <button class="btn secondary auth" type="submit">Izrakstīties</button>
+          <button class="btn secondary" type="submit">Izrakstīties</button>
         </form>
       @else
-        <a href="/login" class="btn auth">Ielogoties</a>
+        <a href="/login" class="btn">Ielogoties</a>
       @endif
     </div>
   </header>
