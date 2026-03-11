@@ -33,50 +33,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">🛠 Pārvaldīt pasākumus</h5>
-                    <p class="card-text">Skatīt, pievienot vai labot pasākumus tieši no CRUD interfeisa.</p>
-                    <a href="{{ route('pasakumi.index') }}" class="btn btn-primary mt-2">Atvērt CRUD</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- quick CRUD preview section --}}
-    <div class="container mt-5">
-        <h2 class="page-title">Pārvaldīt pasākumus</h2>
-        @if(isset($preview) && $preview->count())
-            <table class="table table-striped" style="width:100%; margin-top: 16px;">
-                <thead>
-                    <tr>
-                        <th>Nosaukums</th>
-                        <th>Datums</th>
-                        <th>Veikt</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($preview as $item)
-                        <tr>
-                            <td>{{ $item->nosaukums }}</td>
-                            <td>{{ $item->datums }}</td>
-                            <td>
-                                <a href="{{ route('pasakumi.edit', $item->ID) }}" class="btn btn-secondary">Labot</a>
-                                <form action="{{ route('pasakumi.destroy', $item->ID) }}" method="POST" style="display:inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn" onclick="return confirm('Dzēst šo ierakstu?')">Dzēst</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @else
-            <p>Nav pieejamu pasākumu priekšskatam.</p>
-        @endif
-        <a href="{{ route('pasakumi.index') }}" class="btn btn-primary mt-3">Skatīt visus / pievienot jaunu</a>
     </div>
 </div>
 @endsection
