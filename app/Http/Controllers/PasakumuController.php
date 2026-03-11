@@ -46,6 +46,11 @@ class PasakumuController extends Controller
         $data->fill($validated);
         $data->save();
 
+        // return to the page the user came from (home or list)
+        $previous = url()->previous();
+        if (rtrim($previous, '/') === url('/')) {
+            return redirect('/')->with('success', 'Dati veiksmīgi saglabāti');
+        }
         return redirect('/pasakumi')->with('success', 'Dati veiksmīgi saglabāti');
     }
 
@@ -88,6 +93,10 @@ class PasakumuController extends Controller
         $data->fill($validated);
         $data->save();
 
+        $previous = url()->previous();
+        if (rtrim($previous, '/') === url('/')) {
+            return redirect('/')->with('success', 'Dati veiksmīgi atjaunoti');
+        }
         return redirect('/pasakumi')->with('success', 'Dati veiksmīgi atjaunoti');
     }
 
@@ -97,6 +106,10 @@ class PasakumuController extends Controller
     public function destroy($id)
     {
         Pasakumi::findOrFail($id)->delete();
+        $previous = url()->previous();
+        if (rtrim($previous, '/') === url('/')) {
+            return redirect('/')->with('success', 'Dati veiksmīgi izdzēsti');
+        }
         return redirect('/pasakumi')->with('success', 'Dati veiksmīgi izdzēsti');
     }
 }

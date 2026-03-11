@@ -66,7 +66,7 @@
         
         <div style="display:flex; gap:12px;">
             <button type="submit" class="btn">Atjaunināt</button>
-            <a href="{{ route('pasakumi.index') }}" class="btn secondary">Atcelt</a>
+            <a href="{{ url()->previous() }}" class="btn secondary">Atcelt</a>
         </div>
     </form>
 @endsection
